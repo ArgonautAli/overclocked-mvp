@@ -14,3 +14,11 @@ config/name="overclocked-demo"
 run/main_scene="res://scene/mvp_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[physics]
+
+2d/default_gravity=1480.0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
