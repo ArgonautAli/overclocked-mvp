@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkumnod1rgbkj"]
+[gd_scene load_steps=30 format=3 uid="uid://dkumnod1rgbkj"]
 
 [ext_resource type="Texture2D" uid="uid://n1wjqfvv4rh" path="res://assets/IDLE.png" id="1_8slrv"]
 [ext_resource type="Script" path="res://scripts/player_2.gd" id="1_sjmpu"]
 [ext_resource type="Texture2D" uid="uid://dm3lpwailxr70" path="res://assets/ATTACK 1.png" id="2_oi4xx"]
 [ext_resource type="Texture2D" uid="uid://cy1xtpele07ym" path="res://assets/v1_block_crouch.png" id="3_gsivv"]
 [ext_resource type="Texture2D" uid="uid://defsvml5goovc" path="res://assets/RUN.png" id="3_t5dv5"]
+[ext_resource type="PackedScene" uid="uid://cucrmv37s7qua" path="res://scene/dash.tscn" id="6_0icqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_erh8d"]
 atlas = ExtResource("2_oi4xx")
@@ -114,7 +115,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"block",
-"speed": 12.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,7 +190,7 @@ position = Vector2(-1, -22)
 sprite_frames = SubResource("SpriteFrames_dwbee")
 animation = &"block"
 autoplay = "idle"
-frame_progress = 0.713192
+frame_progress = 0.544389
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -199,3 +200,5 @@ shape = SubResource("CircleShape2D_loahi")
 position = Vector2(0, -19)
 scale = Vector2(0.968091, 1.16809)
 shape = SubResource("CapsuleShape2D_5s3to")
+
+[node name="Dash" parent="." instance=ExtResource("6_0icqi")]

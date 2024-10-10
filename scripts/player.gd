@@ -1,19 +1,24 @@
 extends CharacterBody2D
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var player: CharacterBody2D = $"."
+@onready var dash: Node2D = $Dash
 
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
+const DASH_SPEED = 400
+const DASH_DURATION = 0.2
+
 var is_jumped = false
-
-@onready var sprite_2d: Sprite2D = $Sprite2D
-
-@onready var player: CharacterBody2D = $"."
 
 
 func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	
+
 		
 	# Double jump 
 	if Input.is_action_just_pressed("ui_accept") and is_jumped:
