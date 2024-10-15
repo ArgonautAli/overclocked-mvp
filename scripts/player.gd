@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var dash: Node2D = $Dash
 
+
+
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 400

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkumnod1rgbkj"]
+[gd_scene load_steps=31 format=3 uid="uid://dkumnod1rgbkj"]
 
 [ext_resource type="Texture2D" uid="uid://n1wjqfvv4rh" path="res://assets/IDLE.png" id="1_8slrv"]
 [ext_resource type="Script" path="res://scripts/player_2.gd" id="1_sjmpu"]
@@ -30,6 +30,10 @@ region = Rect2(372, 56, 93, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ryx8"]
 atlas = ExtResource("3_gsivv")
 region = Rect2(0, 56, 93, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w4my"]
+atlas = ExtResource("3_gsivv")
+region = Rect2(93, 56, 93, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhs71"]
 atlas = ExtResource("1_8slrv")
@@ -119,6 +123,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1w4my")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qhs71")
 }, {
 "duration": 1.0,
@@ -190,7 +202,6 @@ position = Vector2(-1, -22)
 sprite_frames = SubResource("SpriteFrames_dwbee")
 animation = &"block"
 autoplay = "idle"
-frame_progress = 0.544389
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
