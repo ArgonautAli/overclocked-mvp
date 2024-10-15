@@ -7,14 +7,21 @@ const JUMP_VELOCITY = -450.0
 const DASH_SPEED = 1500
 const DASH_DURATION = 0.2  # Adjust duration as needed
 const MOVE_SPEED = 200
+const DASH_DISTANCE = 1000  # How far to dash when no direction is pressed
 
 var is_jumped = false
 var speed = MOVE_SPEED
+var facing_direction = 1  # 1 for right, -1 for left
 
 func _physics_process(delta: float) -> void:
+	# Start dash
 	if Input.is_action_just_pressed("dash"):
 		dash.start_dash(DASH_DURATION)
+		if Input.get_axis("move_left", "move_right") == 0:
+			# Dash in the direction the player is facing if no input
+			velocity.x = facing_direction * DASH_DISTANCE
 
+	# Adjust speed based on dash state
 	speed = DASH_SPEED if dash.is_dashing() else MOVE_SPEED
 
 	if not is_on_floor():
@@ -45,16 +52,20 @@ func _physics_process(delta: float) -> void:
 
 	# Flip character based on direction
 	if direction > 0:
+		facing_direction = 1
 		animated_sprite.flip_h = false
 	elif direction < 0:
+		facing_direction = -1
 		animated_sprite.flip_h = true 
 
 	if not is_on_floor(): 
 		animated_sprite.play("jump")
 
+	# Handle movement
 	if direction:
 		velocity.x = direction * speed
 	else:
+		# Gradually slow down to 0 when no input is given
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
