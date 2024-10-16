@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://dkumnod1rgbkj"]
+[gd_scene load_steps=32 format=3 uid="uid://dkumnod1rgbkj"]
 
 [ext_resource type="Texture2D" uid="uid://n1wjqfvv4rh" path="res://assets/IDLE.png" id="1_8slrv"]
 [ext_resource type="Script" path="res://scripts/player_2.gd" id="1_sjmpu"]
+[ext_resource type="PackedScene" uid="uid://deycgbfq2rnaw" path="res://scene/dash_ghost.tscn" id="2_4aal2"]
 [ext_resource type="Texture2D" uid="uid://dm3lpwailxr70" path="res://assets/ATTACK 1.png" id="2_oi4xx"]
 [ext_resource type="Texture2D" uid="uid://cy1xtpele07ym" path="res://assets/v1_block_crouch.png" id="3_gsivv"]
 [ext_resource type="Texture2D" uid="uid://defsvml5goovc" path="res://assets/RUN.png" id="3_t5dv5"]
@@ -195,12 +196,14 @@ radius = 4.13184
 height = 13.6976
 
 [node name="Player2" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_sjmpu")
+ghost_node = ExtResource("2_4aal2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -22)
 sprite_frames = SubResource("SpriteFrames_dwbee")
-animation = &"block"
+animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -213,3 +216,8 @@ scale = Vector2(0.968091, 1.16809)
 shape = SubResource("CapsuleShape2D_5s3to")
 
 [node name="Dash" parent="." instance=ExtResource("6_0icqi")]
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]

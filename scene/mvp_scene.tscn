@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://brr3inkc8vafs"]
+[gd_scene load_steps=10 format=4 uid="uid://brr3inkc8vafs"]
 
 [ext_resource type="Texture2D" uid="uid://b54mqahv367f5" path="res://assets/monochrome_tilemap_packed.png" id="2_befuu"]
+[ext_resource type="PackedScene" uid="uid://deycgbfq2rnaw" path="res://scene/dash_ghost.tscn" id="2_rsp2f"]
 [ext_resource type="PackedScene" uid="uid://ckyr13ljf3x8h" path="res://scene/killZone.tscn" id="3_1tsho"]
 [ext_resource type="PackedScene" uid="uid://dkumnod1rgbkj" path="res://scene/player_2.tscn" id="4_mlof6"]
 
@@ -942,3 +943,8 @@ zoom = Vector2(4, 4)
 limit_bottom = 160
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="Dash_Ghost" parent="." instance=ExtResource("2_rsp2f")]
+visible = false
+modulate = Color(0.473976, 0.473976, 0.473976, 1)
+position = Vector2(-150, -48)

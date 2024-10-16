@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://deycgbfq2rnaw"]
+
+[ext_resource type="Texture2D" uid="uid://defsvml5goovc" path="res://assets/RUN.png" id="1_jssb3"]
+[ext_resource type="Script" path="res://scene/dash_ghost_1.gd" id="2_20diy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxudn"]
+atlas = ExtResource("1_jssb3")
+region = Rect2(0, 56, 93, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x378p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxudn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+show_behind_parent = true
+z_index = 1
+position = Vector2(-1, -22)
+sprite_frames = SubResource("SpriteFrames_x378p")
+autoplay = "default"
+script = ExtResource("2_20diy")
