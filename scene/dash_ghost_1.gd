@@ -6,6 +6,7 @@ func _ready() -> void:
 
 func set_property(tx_pos, tx_scale, tx_flip):
 	global_position = tx_pos
+	global_position.x = tx_pos.x + 15 if(tx_flip == true) else tx_pos.x - 15
 	scale = tx_scale
 	flip_h = tx_flip
 	
