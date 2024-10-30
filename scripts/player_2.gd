@@ -68,13 +68,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Handle jump
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_wall_jumped:
+	if Input.is_action_just_pressed("jump") and is_on_floor() :
 		is_jumped = true
 		velocity.y = JUMP_VELOCITY
 
 	# Handle jump
 		
-	if Input.is_action_just_pressed("jump") and is_wall_jumped and is_latched:
+	if Input.is_action_just_pressed("jump") and is_latched:
 		# Get the wall normal vector from the slide collision
 		var wall_normal = get_slide_collision(0).get_normal()
 		
@@ -82,8 +82,8 @@ func _physics_process(delta: float) -> void:
 		var jump_direction: Vector2 = -wall_normal.normalized()
 		
 		# Apply a force or set the velocity based on the jump direction
-		velocity.x = jump_direction.x * JUMP_VELOCITY  # Apply pushback on the X-axis
-		velocity.y = -JUMP_VELOCITY  # Jumping upwards (negative Y)
+		velocity.x = jump_direction.x * JUMP_VELOCITY * -1  # Apply pushback on the X-axis
+		velocity.y = JUMP_VELOCITY  # Jumping upwards (negative Y)
 		
 		# Optional: Reset the latching state if you want the player to no longer be latched
 		is_latched = false  # Reset latch state
